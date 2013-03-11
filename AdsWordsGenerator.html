@@ -1,0 +1,54 @@
+<HTML xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>落花飞扬专用</title>
+<script type="text/JavaScript">
+      
+  function generateAdsWords() {
+    var storedWords = [ 
+	"热销","劲销","盛启","荣耀","天下","山河","山湖","自然","大隐",
+	"梦想","同步","升值","尚层","典范","尺度","未来","悠然","珍贵",
+	"罕有","颠覆","缔造","主流","仰慕","洞悉","传承","血统","深植",
+	"繁盛","收藏","终极","城央","城阙","观山","观海","观湖","观心",
+	"墅领","品质","不凡","黄金","上佳","典藏","经典","升值","CDB",
+	"标杆","中心","巅峰","御景","一线","杰作","璀璨","罕珍","精装",
+	"名邸","墅质"];
+    //alert(storedWords.length);
+    var inputWordsStr = document.getElementById("inputWordsTa").value;
+    //alert(inputWordsStr);
+    if(inputWordsStr != ''){
+	    var inputWords = inputWordsStr.split(" ");
+	    storedWords = storedWords.concat(inputWords);
+    }
+    //alert(storedWords.length);
+    var indexs = [];
+    while(true){
+	    var i = parseInt(Math.random()*storedWords.length);
+//	    alert(i);
+	    var exists = false;
+	    for(var x=0;x<indexs.length;x++){
+		    if(indexs[x]==i){
+		        exists = true;
+			break;
+		    }
+	    }
+	    if(!exists)
+		    indexs.push(i);
+	    if(indexs.length == 3) break;
+    }
+    var finalStr = storedWords[indexs[0]]+" "+storedWords[indexs[1]]+" "+storedWords[indexs[2]];
+//    alert("final"+finalStr);
+    document.getElementById("genWords").innerHTML=finalStr;
+  }
+</script>
+</head>
+<body>
+添加词库(词之间空格隔开)：
+<textarea id="inputWordsTa" rows="3" cols="20">
+</textarea>	
+<br>
+<input name="words" id="words" type="button" value="点击生成" onClick="generateAdsWords()" />
+生成词汇：<label id="genWords"></label>
+</body>
+</html>
+
